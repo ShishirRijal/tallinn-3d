@@ -47,6 +47,9 @@ TERRAIN_STEP = 4.0
 TEX_SIZE = 4096
 BASE_Y = -12.0  # bottom of the diorama block
 POS_SCALE = 32
+# Building Register years that are data-entry defaults rather than real dates
+# (e.g. 113 Old Town buildings, many medieval, are recorded as first used in 1940)
+PLACEHOLDER_YEARS = {1940, 1946, 1994}
 
 to3301 = Transformer.from_crs(4326, 3301, always_xy=True)
 
@@ -621,6 +624,30 @@ def finish_landmarks(landmarks, blds, T, gs, fps):
     print(f"landmarks: {len(out)}")
 
 
+def attach_years(blds, fields_ehr, landmarks):
+    """First-use year per building from the Building Register (tools/fetch_ehr_years.py).
+
+    Landmarks use their curated date instead: a plain year (e.g. 1900 for Nevsky) is used as-is,
+    anything older or vaguer ("13th c.") means the building predates every historical map.
+    """
+    f = RAW / "hist" / "ehr_years.json"
+    years = json.load(open(f)) if f.exists() else {}
+    lm_year = {lm["id"]: lm["year"] for lm in landmarks}
+    for b in blds:
+        if b.get("lm"):
+            y = lm_year.get(b["lm"], "")
+            b["y"] = int(y) if y.isdigit() and int(y) > 1800 else None
+        elif b["old"]:
+            # inside the Old Town the register often records restoration dates as "first use";
+            # never risk erasing a medieval house, so these are always shown
+            b["y"] = None
+        else:
+            y = years.get(fields_ehr[b["_src"]] or "")
+            b["y"] = None if y in PLACEHOLDER_YEARS else y
+        if b["y"] is None:
+            b.pop("y")
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     T = Terrain()
@@ -630,6 +657,8 @@ def main():
     landmarks = resolve_landmarks(elements)
     blds, gs, fps = build_buildings(T, oldtown, landmarks)
     attach_osm_names(blds, fps, elements)
+    _, _, _, ehr = pyogrio.raw.read(RAW / "gdb" / "hooned_lod2-Tallinn.gdb", bbox=(E0, N0, E1, N1), columns=["ehr_gid"])
+    attach_years(blds, ehr[0], landmarks)
     finish_landmarks(landmarks, blds, T, gs, fps)
     for b in blds:
         b.pop("_src", None)

@@ -70,10 +70,27 @@
       <button id="home" aria-label="Reset view"><svg viewBox="0 0 24 24"><path d="M4 11 L12 4 L20 11 V20 H14 V14 H10 V20 H4 Z" fill="currentColor"/></svg></button>
     </div>
 
-    <div class="sun">
-      <label for="sun-range"><span class="sun-icon">☀</span> <span id="sun-time">14:00</span></label>
-      <input type="range" id="sun-range" min="5" max="23" step="0.1" value="14" />
+    <div class="bottom-bar">
+      <div class="timeline" role="group" aria-label="Time travel">
+        <span class="timeline-label" data-i18n="timeTravel">Time travel</span>
+        <div class="stops" id="era-stops"></div>
+      </div>
+      <div class="sun">
+        <label for="sun-range"><span class="sun-icon">☀</span> <span id="sun-time">14:00</span></label>
+        <input type="range" id="sun-range" min="5" max="23" step="0.1" value="14" />
+      </div>
     </div>
+
+    <article class="era-card hidden" id="era-card" aria-live="polite">
+      <div class="era-head">
+        <span class="era-year" id="era-year"></span>
+        <h3 id="era-title"></h3>
+        <button class="era-toggle" id="era-toggle" aria-label="Collapse">–</button>
+      </div>
+      <p id="era-text"></p>
+      <div class="era-source" id="era-source"></div>
+    </article>
+    <div class="veil" id="veil"></div>
 
     <div class="tooltip hidden" id="tooltip"></div>
 

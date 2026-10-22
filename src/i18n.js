@@ -24,7 +24,9 @@ export const I18N = {
     building: 'Building',
     d_toompea: 'Toompea',
     d_lower: 'Lower Town',
-    credits: 'Buildings & terrain: Estonian Land and Spatial Development Board 2026 · Map data © OpenStreetMap contributors',
+    timeTravel: 'Time travel',
+    mapSource: 'Map',
+    credits: 'Buildings, terrain & historical maps: Estonian Land and Spatial Development Board 2026 · Building years: Estonian Building Register · Map data © OpenStreetMap contributors',
   },
   et: {
     title: 'Tallinna vanalinn',
@@ -49,7 +51,9 @@ export const I18N = {
     building: 'Hoone',
     d_toompea: 'Toompea',
     d_lower: 'All-linn',
-    credits: 'Hooned ja maapind: Maa- ja Ruumiamet 2026 · Kaardiandmed © OpenStreetMapi kaastöölised',
+    timeTravel: 'Ajarännak',
+    mapSource: 'Kaart',
+    credits: 'Hooned, maapind ja ajaloolised kaardid: Maa- ja Ruumiamet 2026 · Ehitusaastad: ehitisregister · Kaardiandmed © OpenStreetMapi kaastöölised',
   },
   ru: {
     title: 'Старый Таллин',
@@ -74,6 +78,8 @@ export const I18N = {
     building: 'Здание',
     d_toompea: 'Тоомпеа',
     d_lower: 'Нижний город',
-    credits: 'Здания и рельеф: Департамент земли и пространственного развития Эстонии 2026 · Данные карты © участники OpenStreetMap',
+    timeTravel: 'Во времени',
+    mapSource: 'Карта',
+    credits: 'Здания, рельеф и исторические карты: Департамент земли и пространственного развития Эстонии 2026 · Годы постройки: Регистр строений · Данные карты © участники OpenStreetMap',
   },
 };

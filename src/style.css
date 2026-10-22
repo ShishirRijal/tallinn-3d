@@ -57,7 +57,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* ------------------------------------------------ list panel */
 .panel {
-  position: fixed; top: 86px; left: 16px; bottom: 44px; z-index: 9;
+  position: fixed; top: 86px; left: 16px; bottom: 62px; z-index: 9;
   width: 340px;
   display: flex; flex-direction: column;
   background: color-mix(in srgb, var(--paper) 94%, transparent);
@@ -173,7 +173,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .card-progress div { height: 100%; width: 0; background: var(--roof); }
 
 /* ------------------------------------------------ tools */
-.tools { position: fixed; right: 16px; bottom: 64px; z-index: 9; display: flex; flex-direction: column; gap: 8px; align-items: center; }
+.tools { position: fixed; right: 16px; bottom: 16px; z-index: 9; display: flex; flex-direction: column; gap: 8px; align-items: center; }
 .tools button {
   width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--paper);
   box-shadow: var(--shadow); font-size: 20px; display: grid; place-items: center; color: var(--ink);
@@ -181,8 +181,28 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .tools button svg { width: 18px; height: 18px; }
 .tools .compass { width: 52px; height: 52px; border-radius: 50%; padding: 0; border: 0; background: none; }
 .tools .compass svg { width: 52px; height: 52px; }
+.bottom-bar {
+  position: fixed; left: 372px; right: 84px; bottom: 14px; z-index: 9;
+  display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap-reverse;
+  pointer-events: none;
+}
+.bottom-bar > * { pointer-events: auto; }
+.timeline {
+  display: flex; align-items: center; gap: 10px;
+  background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(8px);
+  border: 1px solid var(--line); border-radius: 999px; padding: 5px 6px 5px 14px; box-shadow: var(--shadow);
+}
+.timeline-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.stops { display: flex; position: relative; gap: 2px; }
+.stops button {
+  border: 0; background: transparent; border-radius: 999px; padding: 6px 11px;
+  font-family: var(--display); font-weight: 600; font-size: 14px; color: var(--ink-soft);
+  font-variant-numeric: lining-nums; transition: background 0.2s, color 0.2s;
+}
+.stops button:hover { background: var(--paper-2); }
+.stops button.active { background: var(--ink); color: var(--paper); }
+.stops button.active.past { background: #7a5634; }
 .sun {
-  position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 9;
   display: flex; align-items: center; gap: 10px;
   background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(8px);
   border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; box-shadow: var(--shadow);
@@ -190,7 +210,34 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .sun label { display: flex; gap: 6px; align-items: center; min-width: 62px; }
 .sun-icon { color: var(--ochre); }
-.sun input { width: 180px; accent-color: var(--roof); }
+.sun input { width: 150px; accent-color: var(--roof); }
+
+/* ------------------------------------------------ eras */
+.era-card {
+  position: fixed; top: 16px; left: 372px; z-index: 10; width: 340px;
+  background: #f6efe0; color: #3b2f22;
+  border: 1px solid #dccdb0; border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px 16px 12px;
+  transition: opacity 0.3s, transform 0.35s cubic-bezier(.2,.8,.2,1);
+}
+.era-card.hidden { opacity: 0; transform: translateY(-8px); pointer-events: none; }
+.era-head { display: flex; align-items: baseline; gap: 10px; }
+.era-year { font-family: var(--display); font-weight: 700; font-size: 30px; line-height: 1; color: #7a5634; letter-spacing: -0.02em; }
+.era-card h3 { font-family: var(--display); font-weight: 600; font-size: 17px; margin: 0; flex: 1; }
+.era-toggle { border: 0; background: none; font-size: 18px; color: #9a8466; padding: 0 4px; }
+.era-card p { font-size: 13.5px; line-height: 1.55; margin: 10px 0 8px; color: #54452f; }
+.era-card.collapsed p, .era-card.collapsed .era-source { display: none; }
+.era-source { font-size: 11px; color: #9a8466; }
+.veil {
+  position: fixed; inset: 0; z-index: 7; pointer-events: none; opacity: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(240,225,195,0.75), rgba(150,115,75,0.9));
+  transition: opacity 0.35s ease;
+}
+.veil.on { opacity: 1; }
+@media (max-width: 1180px) and (min-width: 761px) {
+  .era-card { top: auto; bottom: 64px; }
+}
 
 .tooltip {
   position: fixed; z-index: 12; pointer-events: none; left: 0; top: 0;
@@ -202,8 +249,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .tooltip.hidden { display: none; }
 
 .credits {
-  position: fixed; right: 16px; bottom: 16px; z-index: 8; font-size: 10.5px; color: var(--ink-soft);
-  max-width: 240px; text-align: right; line-height: 1.35; opacity: 0.85;
+  position: fixed; left: 16px; bottom: 10px; z-index: 8; font-size: 10px; color: var(--ink-soft);
+  width: 340px; line-height: 1.35; padding: 4px 8px; border-radius: 8px;
+  background: color-mix(in srgb, var(--paper) 82%, transparent); backdrop-filter: blur(6px);
 }
 
 /* ------------------------------------------------ loader */
@@ -221,7 +269,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 @keyframes bob { 50% { transform: translateY(-6px); } }
 
 /* ------------------------------------------------ narrow screens */
-@media (max-width: 1100px) {
+@media (max-width: 760px) {
   .credits { display: none; }
 }
 @media (max-width: 760px) {
@@ -244,6 +292,13 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .tools { bottom: auto; top: 72px; right: 12px; }
   .tools button:not(.compass) { width: 40px; height: 40px; }
   .sun { display: none; }
+  .bottom-bar { left: 0; right: 0; bottom: 74px; padding: 0 12px; }
+  .timeline { padding: 4px 4px 4px 10px; gap: 6px; max-width: 100%; }
+  .timeline-label { display: none; }
+  .stops button { padding: 6px 9px; font-size: 13.5px; }
+  .era-card { left: 12px; right: 64px; top: 70px; width: auto; padding: 10px 12px; max-height: 38vh; overflow: auto; }
+  .era-year { font-size: 24px; }
+  .era-card p { font-size: 13px; }
   .marker .label { display: none; }
   .marker.active .label { display: block; }
 }

@@ -93,6 +93,7 @@ function patchFlags(material, flags, uniforms) {
     shader.uniforms.uFlags = { value: flags.tex };
     shader.uniforms.uTime = uniforms.uTime;
     shader.uniforms.uNight = uniforms.uNight;
+    shader.uniforms.uSepia = uniforms.uSepia;
     shader.vertexShader = shader.vertexShader
       .replace('#include <common>', `#include <common>
         attribute float bid;
@@ -111,6 +112,7 @@ function patchFlags(material, flags, uniforms) {
         varying vec3 vObjN;
         uniform float uTime;
         uniform float uNight;
+        uniform float uSepia;
         float hash12(vec2 p) { return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }`)
       .replace('#include <color_fragment>', `#include <color_fragment>
         // procedural windows on vertical faces: a grid along the wall, some cells blank
@@ -127,6 +129,9 @@ function patchFlags(material, flags, uniforms) {
           lit = win * step(0.48, fract(h * 7.31));
         }
         diffuseColor.rgb = mix(diffuseColor.rgb, diffuseColor.rgb * vec3(0.46, 0.48, 0.55), win * 0.8);
+        // historical eras: buildings turn into a paper-model tone that sits on the old maps
+        float lum = dot(diffuseColor.rgb, vec3(0.3, 0.55, 0.15));
+        diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.62, 0.52, 0.40) * (0.55 + lum * 0.9), uSepia * 0.85);
         if (vFlag.x > 1.5) {
           diffuseColor.rgb *= 1.08;
         } else if (vFlag.x > 0.5) {
@@ -286,7 +291,7 @@ export async function loadWorld(onProgress) {
   groundTex.colorSpace = THREE.SRGBColorSpace;
   groundTex.anisotropy = 8;
 
-  const uniforms = { uTime: { value: 0 }, uNight: { value: 0 } };
+  const uniforms = { uTime: { value: 0 }, uNight: { value: 0 }, uSepia: { value: 0 } };
   const flags = new BuildingFlags(bMeta.buildings.length);
   // landmarks keep their own facades (big church windows, hand-built models)
   flags.setStatic(bMeta.buildings.flatMap((b, i) => (b.lm ? [i] : [])), 1);
@@ -298,6 +303,35 @@ export async function loadWorld(onProgress) {
   buildings.scale.setScalar(1 / b.scale);
   buildings.castShadow = buildings.receiveShadow = true;
   b.geometry.computeBoundsTree();
+
+  // Per-era index buffers: drop triangles of buildings first used after the era's year.
+  // Buildings with no recorded year are treated as old and always shown.
+  const fullIndex = b.geometry.index;
+  const bidAttr = b.geometry.attributes.bid.array;
+  const years = bMeta.buildings.map((bb) => bb.y || 0);
+  const eraCache = new Map();
+  const setEraYear = (year) => {
+    if (!eraCache.has(year)) {
+      if (year >= 9999) eraCache.set(year, { index: fullIndex, bvh: b.geometry.boundsTree });
+      else {
+        const src = fullIndex.array;
+        const out = new Uint32Array(src.length);
+        let n = 0;
+        for (let i = 0; i < src.length; i += 3) {
+          const y = years[bidAttr[src[i]]];
+          if (y && y > year) continue;
+          out[n++] = src[i]; out[n++] = src[i + 1]; out[n++] = src[i + 2];
+        }
+        b.geometry.setIndex(new THREE.BufferAttribute(out.slice(0, n), 1));
+        b.geometry.computeBoundsTree();
+        eraCache.set(year, { index: b.geometry.index, bvh: b.geometry.boundsTree });
+      }
+    }
+    const e = eraCache.get(year);
+    b.geometry.setIndex(e.index);
+    b.geometry.boundsTree = e.bvh;
+  };
+  const isVisibleIn = (bid, year) => !(years[bid] && years[bid] > year);
 
   const w = parseMesh(wBuf);
   const walls = new THREE.Mesh(w.geometry, new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95, side: THREE.DoubleSide }));
@@ -320,5 +354,26 @@ export async function loadWorld(onProgress) {
     return h(i, j) * (1 - u) * (1 - v) + h(i + 1, j) * u * (1 - v) + h(i, j + 1) * (1 - u) * v + h(i + 1, j + 1) * u * v;
   };
 
-  return { root, buildings, terrain, flags, uniforms, meta: bMeta, terrainMeta: tMeta, landmarks, oldtown, heightAt };
+  // historical map drapes, loaded on first use
+  const texLoader = new THREE.TextureLoader();
+  const mapCache = new Map();
+  const loadMap = (path) => {
+    if (!mapCache.has(path)) {
+      mapCache.set(path, new Promise((res, rej) => texLoader.load(DATA + path, (t) => {
+        t.colorSpace = THREE.SRGBColorSpace;
+        t.anisotropy = 8;
+        res(t);
+      }, undefined, rej)));
+    }
+    return mapCache.get(path);
+  };
+  const setGround = (tex) => {
+    terrain.material.map = tex || groundTex;
+    terrain.material.needsUpdate = true;
+  };
+
+  return {
+    root, buildings, terrain, trees, flags, uniforms, meta: bMeta, terrainMeta: tMeta, landmarks, oldtown, heightAt,
+    setEraYear, isVisibleIn, loadMap, setGround,
+  };
 }

@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { MapControls } from 'three/addons/controls/MapControls.js';
 import { loadWorld } from './world.js';
 import { I18N, CATS } from './i18n.js';
+import { ERAS } from './eras.js';
 
 const $ = (s) => document.querySelector(s);
 const canvas = $('#scene');
@@ -49,6 +50,8 @@ const state = {
   tour: false,
   tourT: 0,
   hover: -1,
+  era: 'today',
+  eraBusy: false,
 };
 const TOUR_STEP = 11; // seconds per stop
 let world;
@@ -171,6 +174,8 @@ function applyI18n() {
   renderList();
   renderMarkers();
   renderDistricts();
+  renderTimeline();
+  renderEraCard();
   if (state.selected >= 0) renderCard();
 }
 
@@ -198,7 +203,10 @@ function renderList() {
     li.className = `cat-${lm.cat}` + (i === state.selected ? ' active' : '');
     const alt = state.lang === 'et' ? lm.name.en : lm.name.et;
     li.innerHTML = `<span class="n">${i + 1}</span><span><div class="t">${lm.name[state.lang]}</div><div class="s">${alt}</div></span><span class="y">${lm.year}</span>`;
-    li.onclick = () => select(i, { stopTour: true });
+    li.onclick = () => {
+      if (!existsIn(lm, eraOf())) setEra('today').then(() => select(i, { stopTour: true }));
+      else select(i, { stopTour: true });
+    };
     ol.appendChild(li);
   });
 }
@@ -343,7 +351,7 @@ function step(d) {
   let i = state.selected;
   for (let k = 0; k < n; k++) {
     i = (i + d + n) % n;
-    if (visible(world.landmarks[i])) break;
+    if (visible(world.landmarks[i]) && existsIn(world.landmarks[i], eraOf())) break;
   }
   select(i);
 }
@@ -438,6 +446,10 @@ function wireUi() {
   $('#home').onclick = () => { setTour(false); select(-1); homeView(1.6); };
   $('#sun-range').addEventListener('input', (e) => setSun(+e.target.value));
   $('#panel-toggle').onclick = () => $('#list-panel').classList.toggle('open');
+  $('#era-toggle').onclick = () => {
+    const c = $('#era-card').classList.toggle('collapsed');
+    $('#era-toggle').textContent = c ? '+' : '–';
+  };
   addEventListener('keydown', (e) => {
     if (e.target.tagName === 'INPUT') return;
     if (e.key === 'ArrowRight') { setTour(false); step(1); }
@@ -449,6 +461,61 @@ function wireUi() {
     camera.updateProjectionMatrix();
     renderer.setSize(innerWidth, innerHeight);
   });
+}
+
+// ------------------------------------------------------------ time travel
+const eraOf = () => ERAS.find((e) => e.id === state.era);
+// a landmark exists in an era unless its building dates (numerically) from later
+function existsIn(lm, era) {
+  const y = parseInt(lm.year, 10);
+  return !(lm.buildings.length && /^\d{4}$/.test(lm.year) && y > era.year);
+}
+
+function renderTimeline() {
+  const root = $('#era-stops');
+  root.innerHTML = '';
+  for (const e of ERAS) {
+    const b = document.createElement('button');
+    b.textContent = e.id === 'today' ? e.title[state.lang] : e.id;
+    b.className = (e.id === state.era ? 'active' : '') + (e.map ? ' past' : '');
+    b.onclick = () => setEra(e.id);
+    root.appendChild(b);
+  }
+}
+
+function renderEraCard() {
+  const e = eraOf();
+  const card = $('#era-card');
+  if (!e.map) { card.classList.add('hidden'); return; }
+  $('#era-year').textContent = e.id;
+  $('#era-title').textContent = e.title[state.lang];
+  $('#era-text').textContent = e.text[state.lang];
+  $('#era-source').textContent = `${t('mapSource')}: ${e.source[state.lang]} · Maa- ja Ruumiamet`;
+  card.classList.remove('hidden');
+}
+
+async function setEra(id) {
+  if (id === state.era || state.eraBusy) return;
+  const era = ERAS.find((e) => e.id === id);
+  state.eraBusy = true;
+  state.era = id;
+  renderTimeline();
+  $('#veil').classList.add('on');
+  try {
+    const [tex] = await Promise.all([era.map ? world.loadMap(era.map) : null, new Promise((r) => setTimeout(r, 380))]);
+    world.setGround(tex);
+    world.setEraYear(era.year);
+    world.trees.visible = !era.map;
+    world.uniforms.uSepia.value = era.map ? 1 : 0;
+    markers.forEach((m, i) => m.el.classList.toggle('hidden', !existsIn(world.landmarks[i], era)));
+    if (state.selected >= 0 && !existsIn(world.landmarks[state.selected], era)) select(-1);
+    if (state.hover >= 0) setHover(-1);
+    renderEraCard();
+  } catch (err) {
+    console.error(err);
+  }
+  requestAnimationFrame(() => $('#veil').classList.remove('on'));
+  state.eraBusy = false;
 }
 
 // ------------------------------------------------------------ framing
