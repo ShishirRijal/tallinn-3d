@@ -1,0 +1,550 @@
+[
+ {
+  "id": "raekoda",
+  "cat": "civic",
+  "year": "1404",
+  "name": {
+   "en": "Tallinn Town Hall",
+   "et": "Tallinna raekoda",
+   "ru": "Таллинская ратуша"
+  },
+  "text": {
+   "en": "The only surviving Gothic town hall in Northern Europe, completed in 1404. The weathervane Old Thomas (Vana Toomas) has watched over the square from its spire since 1530; today's figure is a replica.",
+   "et": "Põhja-Euroopa ainus säilinud gooti stiilis raekoda, valmis 1404. aastal. Tuulelipp Vana Toomas on torni tipust platsi valvanud alates 1530. aastast; praegune kuju on koopia.",
+   "ru": "Единственная сохранившаяся готическая ратуша в Северной Европе, завершена в 1404 году. Флюгер «Старый Томас» стоит на шпиле с 1530 года; нынешняя фигура — копия."
+  },
+  "anchor": [
+   93.4,
+   80.9,
+   108.4
+  ],
+  "ground": 14.4,
+  "buildings": [
+   1083
+  ]
+ },
+ {
+  "id": "raeplats",
+  "cat": "square",
+  "year": "13th c.",
+  "name": {
+   "en": "Town Hall Square",
+   "et": "Raekoja plats",
+   "ru": "Ратушная площадь"
+  },
+  "text": {
+   "en": "The heart of the lower town since the Middle Ages: a marketplace, a stage for fairs and festivals, and home to one of Europe's best-known Christmas markets each winter.",
+   "et": "All-linna süda juba keskajast: turuplats, laatade ja pidustuste paik ning igal talvel üks Euroopa tuntumaid jõuluturge.",
+   "ru": "Сердце нижнего города со Средних веков: рыночная площадь, место ярмарок и праздников, а зимой — одна из самых известных рождественских ярмарок Европы."
+  },
+  "anchor": [
+   89.6,
+   19.8,
+   68.3
+  ],
+  "ground": 14.8,
+  "buildings": []
+ },
+ {
+  "id": "raeapteek",
+  "cat": "civic",
+  "year": "1422",
+  "name": {
+   "en": "Town Hall Pharmacy",
+   "et": "Raeapteek",
+   "ru": "Ратушная аптека"
+  },
+  "text": {
+   "en": "One of the oldest continuously operating pharmacies in Europe, first mentioned in 1422. Medieval remedies reportedly included marzipan, mummy powder and burnt hedgehog.",
+   "et": "Üks Euroopa vanimaid järjepidevalt tegutsevaid apteeke, esmamainitud 1422. aastal. Keskaegsete ravimite hulka kuulusid väidetavalt martsipan, muumiapulber ja põletatud siil.",
+   "ru": "Одна из старейших непрерывно работающих аптек Европы, впервые упомянута в 1422 году. Среди средневековых лекарств, по преданию, были марципан, порошок мумии и жжёный ёж."
+  },
+  "anchor": [
+   142.8,
+   32.9,
+   20.2
+  ],
+  "ground": 13.9,
+  "buildings": [
+   657
+  ]
+ },
+ {
+  "id": "oleviste",
+  "cat": "church",
+  "year": "13th c.",
+  "name": {
+   "en": "St Olaf's Church",
+   "et": "Oleviste kirik",
+   "ru": "Церковь Олевисте"
+  },
+  "text": {
+   "en": "Its spire, now 123.7 m, once reached around 159 m and by some accounts made it the tallest building in the world from 1549 to 1625. Lightning has struck it many times and the church has burned down three times.",
+   "et": "Praegu 123,7 m kõrgune torn ulatus kunagi umbes 159 meetrini ja oli mõnede andmete järgi aastatel 1549–1625 maailma kõrgeim ehitis. Välk on tabanud seda korduvalt ja kirik on kolm korda maha põlenud.",
+   "ru": "Шпиль высотой 123,7 м когда-то достигал около 159 м, и, по некоторым данным, в 1549–1625 годах церковь была самым высоким зданием в мире. Молния била в неё много раз, а сама церковь трижды сгорала."
+  },
+  "anchor": [
+   210.5,
+   162.8,
+   -373.3
+  ],
+  "ground": 17.1,
+  "buildings": [
+   1122
+  ]
+ },
+ {
+  "id": "puhavaimu",
+  "cat": "church",
+  "year": "14th c.",
+  "name": {
+   "en": "Holy Spirit Church",
+   "et": "Pühavaimu kirik",
+   "ru": "Церковь Святого Духа"
+  },
+  "text": {
+   "en": "A small 14th-century church that once served as the town council's chapel. Its carved outdoor clock from 1684 is the oldest public clock in Tallinn.",
+   "et": "Väike 14. sajandi kirik, mis oli kunagi raehärrade kabel. Selle 1684. aasta puunikerdustega väliskell on Tallinna vanim avalik kell.",
+   "ru": "Небольшая церковь XIV века, когда-то служившая часовней городского совета. Её резные уличные часы 1684 года — старейшие общественные часы Таллина."
+  },
+  "anchor": [
+   137.2,
+   41.9,
+   -24.2
+  ],
+  "ground": 14.5,
+  "buildings": [
+   1087
+  ]
+ },
+ {
+  "id": "niguliste",
+  "cat": "church",
+  "year": "13th c.",
+  "name": {
+   "en": "St Nicholas' Church",
+   "et": "Niguliste kirik",
+   "ru": "Церковь Нигулисте"
+  },
+  "text": {
+   "en": "Founded in the 13th century by German merchants and dedicated to the patron saint of seafarers. Today it is a museum of church art, home to a fragment of Bernt Notke's Danse Macabre.",
+   "et": "Saksa kaupmeeste poolt 13. sajandil rajatud ja meresõitjate kaitsepühakule pühendatud kirik. Täna on see kirikukunsti muuseum, kus asub Bernt Notke „Surmatantsu“ fragment.",
+   "ru": "Основана немецкими купцами в XIII веке и посвящена покровителю мореплавателей. Сегодня это музей церковного искусства, где хранится фрагмент «Пляски смерти» Бернта Нотке."
+  },
+  "anchor": [
+   -74.9,
+   112.6,
+   232.6
+  ],
+  "ground": 22.5,
+  "buildings": [
+   1081
+  ]
+ },
+ {
+  "id": "mustpead",
+  "cat": "civic",
+  "year": "1597",
+  "name": {
+   "en": "House of the Blackheads",
+   "et": "Mustpeade maja",
+   "ru": "Дом Братства черноголовых"
+  },
+  "text": {
+   "en": "Seat of the Brotherhood of Blackheads, a guild of unmarried merchants and shipowners. The richly decorated Renaissance façade dates from 1597.",
+   "et": "Mustpeade vennaskonna, vallaliste kaupmeeste ja laevaomanike gildi maja. Rikkalikult kaunistatud renessansiajastu fassaad pärineb aastast 1597.",
+   "ru": "Резиденция Братства черноголовых — гильдии неженатых купцов и судовладельцев. Богато украшенный ренессансный фасад датируется 1597 годом."
+  },
+  "anchor": [
+   156.0,
+   41.4,
+   -84.5
+  ],
+  "ground": 16.5,
+  "buildings": [
+   708
+  ]
+ },
+ {
+  "id": "suurgild",
+  "cat": "civic",
+  "year": "1410",
+  "name": {
+   "en": "Great Guild Hall",
+   "et": "Suurgildi hoone",
+   "ru": "Здание Большой гильдии"
+  },
+  "text": {
+   "en": "Built in 1410 for the Great Guild, the association of the town's wealthiest merchants. Today it houses the Estonian History Museum.",
+   "et": "Ehitatud 1410. aastal Suurgildile, linna jõukaimate kaupmeeste ühendusele. Täna asub hoones Eesti Ajaloomuuseum.",
+   "ru": "Построено в 1410 году для Большой гильдии — объединения самых богатых купцов города. Сегодня здесь находится Эстонский исторический музей."
+  },
+  "anchor": [
+   90.4,
+   42.9,
+   -36.1
+  ],
+  "ground": 16.7,
+  "buildings": [
+   1649
+  ]
+ },
+ {
+  "id": "kolmode",
+  "cat": "civic",
+  "year": "15th c.",
+  "name": {
+   "en": "Three Sisters",
+   "et": "Kolm õde",
+   "ru": "Три сестры"
+  },
+  "text": {
+   "en": "Three gabled 15th-century merchant houses at the north end of Pikk Street, each with a hoist beam under the gable for lifting goods into the attic storerooms.",
+   "et": "Kolm viilkatusega 15. sajandi kaupmehemaja Pika tänava põhjaotsas. Igal on viilu all tõstepalk kaupade vinnamiseks pööningule.",
+   "ru": "Три остроконечных купеческих дома XV века в северном конце улицы Пикк. Под фронтоном каждого — балка для подъёма товаров на чердачные склады."
+  },
+  "anchor": [
+   289.1,
+   38.3,
+   -448.3
+  ],
+  "ground": 15.6,
+  "buildings": [
+   920
+  ]
+ },
+ {
+  "id": "margareeta",
+  "cat": "tower",
+  "year": "16th c.",
+  "name": {
+   "en": "Fat Margaret",
+   "et": "Paks Margareeta",
+   "ru": "Толстая Маргарита"
+  },
+  "text": {
+   "en": "A squat early-16th-century cannon tower guarding the Great Coast Gate and the harbour road. It now houses the Estonian Maritime Museum.",
+   "et": "Jässakas 16. sajandi alguse suurtükitorn, mis valvas Suurt Rannaväravat ja sadamateed. Täna asub seal Eesti Meremuuseum.",
+   "ru": "Приземистая артиллерийская башня начала XVI века, охранявшая Большие Морские ворота и дорогу в порт. Сейчас здесь Эстонский морской музей."
+  },
+  "anchor": [
+   328.0,
+   35.2,
+   -511.7
+  ],
+  "ground": 12.7,
+  "buildings": [
+   919
+  ]
+ },
+ {
+  "id": "linnamuur",
+  "cat": "tower",
+  "year": "14th–16th c.",
+  "name": {
+   "en": "Town Wall & Towers",
+   "et": "Linnamüür ja tornid",
+   "ru": "Городская стена и башни"
+  },
+  "text": {
+   "en": "About 1.85 km of the medieval town wall and 26 of its towers still stand, making it one of the best-preserved town walls in Europe. The Nunna, Sauna and Kuldjala towers line up here above Towers' Square.",
+   "et": "Keskaegsest linnamüürist on säilinud umbes 1,85 km ja 26 torni, mis teeb sellest ühe Euroopa paremini säilinud linnamüüri. Siin seisavad reas Nunna-, Sauna- ja Kuldjala torn.",
+   "ru": "Сохранилось около 1,85 км средневековой городской стены и 26 её башен — одна из наиболее сохранившихся городских стен Европы. Здесь в ряд стоят башни Нунна, Сауна и Кулдъяла."
+  },
+  "anchor": [
+   -82.1,
+   52.9,
+   -138.8
+  ],
+  "ground": 17.2,
+  "buildings": [
+   18
+  ]
+ },
+ {
+  "id": "viruvarav",
+  "cat": "tower",
+  "year": "14th c.",
+  "name": {
+   "en": "Viru Gate",
+   "et": "Viru värav",
+   "ru": "Ворота Виру"
+  },
+  "text": {
+   "en": "Two ivy-covered towers are all that remain of the 14th-century gate complex on the road east to the Viru region. Today they frame the main entrance to the Old Town.",
+   "et": "Kaks luuderohuga kaetud torni on kõik, mis on järel 14. sajandi väravakompleksist Virumaale viival teel. Täna raamivad need vanalinna peasissepääsu.",
+   "ru": "Две увитые плющом башни — всё, что осталось от воротного комплекса XIV века на дороге в Вирумаа. Сегодня они обрамляют главный вход в Старый город."
+  },
+  "anchor": [
+   372.0,
+   23.5,
+   173.1
+  ],
+  "ground": 6.8,
+  "buildings": [
+   37
+  ]
+ },
+ {
+  "id": "katariina",
+  "cat": "civic",
+  "year": "1246",
+  "name": {
+   "en": "St Catherine's Passage",
+   "et": "Katariina käik",
+   "ru": "Проход Святой Екатерины"
+  },
+  "text": {
+   "en": "A medieval lane running alongside the walls of the Dominican friary of St Catherine, founded in 1246. Craft workshops and old tombstones line the passage.",
+   "et": "Keskaegne käik 1246. aastal rajatud dominiiklaste Katariina kloostri müüri ääres. Käigu ääres on käsitöökojad ja vanad hauaplaadid.",
+   "ru": "Средневековый проход вдоль стен доминиканского монастыря Святой Екатерины, основанного в 1246 году. Вдоль него — ремесленные мастерские и старинные надгробия."
+  },
+  "anchor": [
+   217.8,
+   32.1,
+   32.8
+  ],
+  "ground": 6.1,
+  "buildings": [
+   318
+  ]
+ },
+ {
+  "id": "kiek",
+  "cat": "tower",
+  "year": "1470s",
+  "name": {
+   "en": "Kiek in de Kök",
+   "et": "Kiek in de Kök",
+   "ru": "Кик-ин-де-Кёк"
+  },
+  "text": {
+   "en": "A 38-metre artillery tower from the 1470s. Its Low German name means 'peek into the kitchen': from the top, guards could look down into the kitchens of the houses below.",
+   "et": "1470. aastatest pärit 38 meetri kõrgune suurtükitorn. Alamsaksakeelne nimi tähendab „piilu kööki“ – torni tipust nägid vahid all asuvate majade köökidesse.",
+   "ru": "38-метровая артиллерийская башня 1470-х годов. Её нижненемецкое название означает «загляни в кухню»: сверху стражники видели кухни домов внизу."
+  },
+  "anchor": [
+   -133.6,
+   75.5,
+   367.7
+  ],
+  "ground": 31.9,
+  "buildings": [
+   1445
+  ]
+ },
+ {
+  "id": "taani",
+  "cat": "view",
+  "year": "1219",
+  "name": {
+   "en": "Danish King's Garden",
+   "et": "Taani kuninga aed",
+   "ru": "Сад датского короля"
+  },
+  "text": {
+   "en": "Legend says that during the Danish conquest of 1219, a red banner with a white cross fell from the sky here — the origin story of the Danish flag, the Dannebrog.",
+   "et": "Legendi järgi langes siin 1219. aasta Taani vallutuse ajal taevast punane valge ristiga lipp – nii sündis Taani lipp Dannebrog.",
+   "ru": "По легенде, во время датского завоевания 1219 года здесь с неба упало красное знамя с белым крестом — так появился датский флаг Даннеброг."
+  },
+  "anchor": [
+   -151.8,
+   43.3,
+   273.8
+  ],
+  "ground": 38.3,
+  "buildings": [
+   1250
+  ]
+ },
+ {
+  "id": "luhikejalg",
+  "cat": "tower",
+  "year": "15th c.",
+  "name": {
+   "en": "Short Leg Gate",
+   "et": "Lühikese jala värav",
+   "ru": "Ворота Короткой ноги"
+  },
+  "text": {
+   "en": "Short Leg, a steep cobbled lane, links the merchants' lower town with the nobility on Toompea hill. Its 15th-century gate tower could be shut to keep the two apart.",
+   "et": "Järsk munakivitänav Lühike jalg ühendab kaupmeeste all-linna aadlike Toompeaga. Selle 15. sajandi väravatorni sai sulgeda, et kaht linnaosa lahus hoida.",
+   "ru": "Крутая мощёная улочка Короткая нога соединяет купеческий нижний город с дворянским Тоомпеа. Её надвратную башню XV века можно было запереть, разделив два города."
+  },
+  "anchor": [
+   -148.4,
+   68.0,
+   217.6
+  ],
+  "ground": 38.2,
+  "buildings": [
+   1366
+  ]
+ },
+ {
+  "id": "nevski",
+  "cat": "church",
+  "year": "1900",
+  "name": {
+   "en": "Alexander Nevsky Cathedral",
+   "et": "Aleksander Nevski katedraal",
+   "ru": "Собор Александра Невского"
+  },
+  "text": {
+   "en": "An Orthodox cathedral built in 1894–1900, when Estonia was part of the Russian Empire. Its onion domes stand directly opposite the parliament in Toompea Castle.",
+   "et": "Õigeusu katedraal, ehitatud 1894–1900, kui Eesti kuulus Vene impeeriumi koosseisu. Sibulkuplid seisavad otse Toompea lossis asuva parlamendi vastas.",
+   "ru": "Православный собор, построенный в 1894–1900 годах, когда Эстония входила в состав Российской империи. Его луковичные купола стоят прямо напротив парламента в замке Тоомпеа."
+  },
+  "anchor": [
+   -244.1,
+   94.0,
+   253.6
+  ],
+  "ground": 44.0,
+  "buildings": [
+   1094
+  ]
+ },
+ {
+  "id": "toompealoss",
+  "cat": "civic",
+  "year": "13th c.",
+  "name": {
+   "en": "Toompea Castle",
+   "et": "Toompea loss",
+   "ru": "Замок Тоомпеа"
+  },
+  "text": {
+   "en": "A stronghold has crowned Toompea hill since the 13th century. The pink Baroque wing, built in 1767–1773, is now the seat of Estonia's parliament, the Riigikogu.",
+   "et": "Toompea künkal on kindlus seisnud 13. sajandist. Roosa barokne hoone, ehitatud 1767–1773, on täna Riigikogu asukoht.",
+   "ru": "Крепость венчает холм Тоомпеа с XIII века. Розовое барочное здание, построенное в 1767–1773 годах, сегодня занимает парламент Эстонии — Рийгикогу."
+  },
+  "anchor": [
+   -385.5,
+   86.3,
+   316.6
+  ],
+  "ground": 43.8,
+  "buildings": [
+   1742
+  ]
+ },
+ {
+  "id": "pikkhermann",
+  "cat": "tower",
+  "year": "14th c.",
+  "name": {
+   "en": "Tall Hermann",
+   "et": "Pikk Hermann",
+   "ru": "Длинный Герман"
+  },
+  "text": {
+   "en": "The tallest tower of Toompea Castle. Estonia's blue-black-white flag is raised on top every morning at sunrise, to the sound of the national anthem.",
+   "et": "Toompea lossi kõrgeim torn. Igal hommikul päikesetõusul heisatakse selle tippu hümni saatel sinimustvalge lipp.",
+   "ru": "Самая высокая башня замка Тоомпеа. Каждое утро на рассвете под звуки гимна на ней поднимают сине-чёрно-белый флаг Эстонии."
+  },
+  "anchor": [
+   -385.5,
+   86.3,
+   316.6
+  ],
+  "ground": 41.5,
+  "buildings": [
+   1742
+  ]
+ },
+ {
+  "id": "toomkirik",
+  "cat": "church",
+  "year": "1233",
+  "name": {
+   "en": "St Mary's Cathedral",
+   "et": "Toomkirik",
+   "ru": "Домский собор"
+  },
+  "text": {
+   "en": "The oldest church in Tallinn, first mentioned in 1233. Its walls are hung with carved coats of arms of the Baltic German noble families who lived on Toompea.",
+   "et": "Tallinna vanim kirik, esmamainitud 1233. aastal. Selle seintel ripuvad Toompeal elanud baltisaksa aadlisuguvõsade puunikerdatud vappepitaafid.",
+   "ru": "Старейшая церковь Таллина, впервые упомянута в 1233 году. На её стенах висят резные гербы остзейских дворянских родов, живших на Тоомпеа."
+  },
+  "anchor": [
+   -278.7,
+   104.8,
+   104.4
+  ],
+  "ground": 47.1,
+  "buildings": [
+   1101
+  ]
+ },
+ {
+  "id": "kohtuotsa",
+  "cat": "view",
+  "year": "",
+  "name": {
+   "en": "Kohtuotsa Viewpoint",
+   "et": "Kohtuotsa vaateplatvorm",
+   "ru": "Смотровая площадка Кохтуотса"
+  },
+  "text": {
+   "en": "The classic postcard view: red rooftops of the lower town, the spires of St Olaf's and the Town Hall, and the sea beyond.",
+   "et": "Klassikaline postkaardivaade: all-linna punased katused, Oleviste ja raekoja tornid ning taamal meri.",
+   "ru": "Классический открыточный вид: красные крыши нижнего города, шпили Олевисте и ратуши, а вдали — море."
+  },
+  "anchor": [
+   -84.1,
+   51.8,
+   29.5
+  ],
+  "ground": 46.8,
+  "buildings": [
+   610
+  ]
+ },
+ {
+  "id": "patkuli",
+  "cat": "view",
+  "year": "",
+  "name": {
+   "en": "Patkuli Viewpoint",
+   "et": "Patkuli vaateplatvorm",
+   "ru": "Смотровая площадка Паткули"
+  },
+  "text": {
+   "en": "A terrace on the northern edge of Toompea's cliff, looking over the town wall, its towers and the harbour. A long staircase leads down to the lower town.",
+   "et": "Terrass Toompea paekalda põhjaservas vaatega linnamüürile, tornidele ja sadamale. Pikk trepp viib alla all-linna.",
+   "ru": "Терраса на северном краю обрыва Тоомпеа с видом на городскую стену, её башни и порт. Длинная лестница ведёт вниз, в нижний город."
+  },
+  "anchor": [
+   -152.6,
+   47.2,
+   -64.5
+  ],
+  "ground": 42.2,
+  "buildings": [
+   938
+  ]
+ },
+ {
+  "id": "vabaduse",
+  "cat": "square",
+  "year": "2009",
+  "name": {
+   "en": "Freedom Square",
+   "et": "Vabaduse väljak",
+   "ru": "Площадь Свободы"
+  },
+  "text": {
+   "en": "A broad square just outside the walls, watched over by the glass War of Independence Victory Column (2009), which commemorates the war of 1918–1920.",
+   "et": "Avar väljak vanalinna müüride taga. Seda valvab 2009. aastal püstitatud klaasist Vabadussõja võidusammas, mis meenutab 1918–1920 sõda.",
+   "ru": "Просторная площадь сразу за стенами Старого города. Над ней возвышается стеклянная Колонна Победы в Освободительной войне (2009) в память о войне 1918–1920 годов."
+  },
+  "anchor": [
+   26.3,
+   22.6,
+   474.7
+  ],
+  "ground": 17.6,
+  "buildings": []
+ }
+]

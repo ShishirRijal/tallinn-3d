@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Tallinn Old Town in 3D</title>
+    <meta name="description" content="Explore Tallinn's medieval Old Town as an interactive 3D map, built from Estonian Land Board 3D data and OpenStreetMap." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M16 2 L20 14 H12 Z' fill='%233f6a5c'/><rect x='12' y='14' width='8' height='16' fill='%23b9482f'/></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="sky"></div>
+    <canvas id="scene"></canvas>
+    <div id="markers"></div>
+    <div id="districts"></div>
+
+    <header class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 48"><path d="M20 2 L25 20 H15 Z" fill="var(--copper)"/><rect x="14" y="20" width="12" height="26" rx="1" fill="var(--roof)"/><rect x="18" y="30" width="4" height="7" rx="2" fill="var(--paper)"/></svg>
+      </div>
+      <div>
+        <h1 data-i18n="title">Tallinn Old Town</h1>
+        <p data-i18n="subtitle">A living 3D map of the medieval city</p>
+      </div>
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en" class="active">EN</button>
+        <button data-lang="et">ET</button>
+        <button data-lang="ru">RU</button>
+      </div>
+    </header>
+
+    <aside class="panel" id="list-panel">
+      <div class="panel-head">
+        <h2 data-i18n="places">Places</h2>
+        <button class="tour-btn" id="tour-btn"><span class="tour-icon">▶</span> <span data-i18n="tour">Take the tour</span></button>
+      </div>
+      <div class="chips" id="chips"></div>
+      <ol class="places" id="places"></ol>
+      <button class="panel-toggle" id="panel-toggle" aria-label="Toggle list"><span></span></button>
+    </aside>
+
+    <article class="card hidden" id="card" aria-live="polite">
+      <button class="card-close" id="card-close" aria-label="Close">×</button>
+      <div class="card-top">
+        <span class="card-num" id="card-num">1</span>
+        <div>
+          <div class="card-cat" id="card-cat"></div>
+          <h3 id="card-title"></h3>
+          <div class="card-alt" id="card-alt"></div>
+        </div>
+      </div>
+      <p id="card-text"></p>
+      <div class="card-meta" id="card-meta"></div>
+      <div class="card-nav">
+        <button id="card-prev" aria-label="Previous">←</button>
+        <div class="card-progress"><div id="card-progress-bar"></div></div>
+        <button id="card-next" aria-label="Next">→</button>
+      </div>
+    </article>
+
+    <div class="tools">
+      <button class="compass" id="compass" aria-label="Reset north">
+        <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="var(--paper)" stroke="var(--line)"/><g id="needle"><path d="M24 7 L29 24 H19 Z" fill="var(--roof)"/><path d="M24 41 L29 24 H19 Z" fill="var(--ink-soft)"/><text x="24" y="17.5" text-anchor="middle" font-size="7" font-weight="700" fill="var(--paper)">N</text></g></svg>
+      </button>
+      <button id="zoom-in" aria-label="Zoom in">+</button>
+      <button id="zoom-out" aria-label="Zoom out">−</button>
+      <button id="home" aria-label="Reset view"><svg viewBox="0 0 24 24"><path d="M4 11 L12 4 L20 11 V20 H14 V14 H10 V20 H4 Z" fill="currentColor"/></svg></button>
+    </div>
+
+    <div class="sun">
+      <label for="sun-range"><span class="sun-icon">☀</span> <span id="sun-time">14:00</span></label>
+      <input type="range" id="sun-range" min="5" max="23" step="0.1" value="14" />
+    </div>
+
+    <div class="tooltip hidden" id="tooltip"></div>
+
+    <footer class="credits">
+      <span data-i18n="credits">Buildings &amp; terrain: Estonian Land and Spatial Development Board 2026 · Map data © OpenStreetMap contributors</span>
+    </footer>
+
+    <div class="loader" id="loader">
+      <div class="loader-inner">
+        <svg viewBox="0 0 40 48" class="loader-mark"><path d="M20 2 L25 20 H15 Z" fill="var(--copper)"/><rect x="14" y="20" width="12" height="26" rx="1" fill="var(--roof)"/></svg>
+        <div class="loader-title" data-i18n="loading">Raising the towers…</div>
+        <div class="loader-bar"><div id="loader-bar"></div></div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
